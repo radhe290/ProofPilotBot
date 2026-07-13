@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProofPilot Chat</title>
+    <meta
+      name="description"
+      content="A modern ProofPilot chatbot interface with responsive bubbles, loading states, and modular UI components."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero-card" aria-label="ProofPilot chatbot">
+        <header class="hero-header">
+          <div>
+            <p class="eyebrow">ProofPilot</p>
+            <h1>Startup-grade chat, built for product teams.</h1>
+            <p class="lede">
+              A responsive chatbot canvas with reusable components, clean state handling, and a polished launch-day feel.
+            </p>
+          </div>
+          <div class="status-pill" aria-live="polite">
+            <span class="status-dot"></span>
+            AI mentor online
+          </div>
+        </header>
+
+        <section class="chat-frame">
+          <section id="starterPrompts" class="starter-prompts" aria-label="Starter prompts">
+            <p class="starter-prompts__label">Try one of these</p>
+            <div class="starter-prompts__grid">
+              <button class="starter-prompt" type="button" data-prompt="Validate my startup idea">Validate my startup idea</button>
+              <button class="starter-prompt" type="button" data-prompt="Help improve my pitch">Help improve my pitch</button>
+              <button class="starter-prompt" type="button" data-prompt="Explain Business Model Canvas">Explain Business Model Canvas</button>
+              <button class="starter-prompt" type="button" data-prompt="How do I validate customer demand?">How do I validate customer demand?</button>
+              <button class="starter-prompt" type="button" data-prompt="Review my value proposition">Review my value proposition</button>
+              <button class="starter-prompt" type="button" data-prompt="Improve my investor pitch">Improve my investor pitch</button>
+            </div>
+          </section>
+
+          <div id="messageList" class="message-list" aria-live="polite" aria-label="Chat messages"></div>
+
+          <div id="loadingBar" class="loading-bar" hidden aria-live="polite">
+            <span class="loading-label">ProofPilot is preparing a response</span>
+            <span class="typing-indicator" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+
+          <div id="chatNotice" class="chat-notice" hidden role="status" aria-live="polite"></div>
+
+          <form id="chatForm" class="composer" autocomplete="off">
+            <label class="sr-only" for="chatInput">Type a message</label>
+            <textarea
+              id="chatInput"
+              class="composer-input"
+              rows="1"
+              placeholder="Ask ProofPilot anything..."
+            ></textarea>
+            <button class="send-button" type="submit">
+              <span>Send</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 12h12m-6-6 6 6-6 6" />
+              </svg>
+            </button>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <template id="messageTemplate">
+      <article class="message" role="listitem">
+        <div class="message-bubble">
+          <p class="message-text"></p>
+        </div>
+      </article>
+    </template>
+
+    <template id="loadingTemplate">
+      <article class="message assistant typing" role="listitem" aria-label="Assistant is typing">
+        <div class="message-bubble">
+          <div class="typing-indicator" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
